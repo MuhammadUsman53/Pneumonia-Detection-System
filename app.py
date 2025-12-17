@@ -105,7 +105,8 @@ def load_pneumonia_model():
         try:
             return load_model(model_path)
         except Exception as e:
-            st.warning(f"Note: Could not load saved model due to compatibility issues ({e}). using a temporary model instance.")
+            print(f"Warning: Could not load saved model due to compatibility issues. Using temporary model. details: {e}")
+            # Fall through to create model
             # Fall through to create model
     
     # Fallback: Create model structure on the fly
