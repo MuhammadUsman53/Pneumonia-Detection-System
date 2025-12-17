@@ -1,5 +1,4 @@
-# TensorFlow CPU is smaller and more stable for Cloud deployment
-tensorflow-cpu==2.15.0
+tensorflow
 streamlit
 numpy
 matplotlib
