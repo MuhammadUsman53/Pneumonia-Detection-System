@@ -234,31 +234,18 @@ if uploaded_file is not None:
             </div>
         """, unsafe_allow_html=True)
         
-        # Custom Bar Chart with fixed scale
-        import matplotlib.pyplot as plt
+        # Custom Progress Bar (The "Line")
+        bar_color = "#28a745" if result == 'NORMAL' else "#ff4b4b"
         
-        fig, ax = plt.subplots()
-        
-        # Logic: Show ONLY the predicted category to avoid confusion
-        # Classes: 0: BACTERIA, 1: NORMAL, 2: VIRUS
-        display_labels = ['Bacteria', 'Normal', 'Virus']
-        predicted_label = display_labels[class_index]
-        predicted_value = prediction[0][class_index]
-        
-        if predicted_label == 'Normal':
-            plot_color = '#28a745' # Green
-        else:
-            plot_color = '#ff4b4b' # Red
-        
-        ax.bar([predicted_label], [predicted_value], color=[plot_color])
-        
-        ax.set_ylim(0, 1) # Fix y-axis to 0-1 range
-        ax.set_ylabel('Probability')
-        ax.set_title(f'Confidence for {predicted_label}')
-        
-        # Add value label on top of bar
-        ax.text(0, predicted_value + 0.01, f"{predicted_value*100:.1f}%", ha='center', va='bottom')
-            
-        st.pyplot(fig)
+        st.markdown(f"""
+            <div style="margin-top: 20px;">
+                <p style="font-weight: bold; margin-bottom: 8px; font-size: 16px; color: #333;">Confidence Level:</p>
+                <div style="width: 100%; background-color: #e9ecef; border-radius: 12px; height: 24px;">
+                    <div style="width: {confidence}%; background-color: {bar_color}; height: 24px; border-radius: 12px; text-align: right; padding-right: 10px; color: white; line-height: 24px; font-weight: bold; font-family: sans-serif; box-shadow: 0 2px 4px rgba(0,0,0,0.2);">
+                        {confidence:.1f}%
+                    </div>
+                </div>
+            </div>
+        """, unsafe_allow_html=True)
 
 
