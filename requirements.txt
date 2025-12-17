@@ -1,0 +1,8 @@
+# TensorFlow CPU is smaller and more stable for Cloud deployment
+tensorflow-cpu==2.15.0
+streamlit
+numpy
+matplotlib
+pillow
+opencv-python-headless
+h5py
